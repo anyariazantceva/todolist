@@ -5,9 +5,45 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>TodoList App</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <div class="container">
+        <div class="app__title">Todolist Application</div>
+        <div class="app__status">Done: 1, Total: 3</div>
 
+        <div class="app__content">
+            <form class="app__add-form">
+                <div class="form__group">
+                    <label class="form__label"></label>
+                    <input class="form__control" placeholder="Add todo...">
+                </div>
+                <div class="form__action">
+                    <button class="btn form__btn">Add</button>
+                </div>
+            </form>
+
+            <ul class="app__list">
+                <li class="app__list-item">
+                    <div class="app__item-title">Make Coffee</div>
+                    <div class="app__edit"><button class="btn btn-edit">Edit</button></div>
+                    <div class="app__delete"><button class="btn btn-delete">Delete</button></div>
+                </li>
+                <li class="app__list-item">
+                    <div class="app__item-title">Wash Dishes</div>
+                    <div class="app__edit"><button class="btn btn-edit">Edit</button></div>
+                    <div class="app__delete"><button class="btn btn-delete">Delete</button></div>
+                </li>
+                <li class="app__list-item">
+                    <div class="app__item-title">Learn Finnish</div>
+                    <div class="app__edit"><button class="btn btn-edit">Edit</button></div>
+                    <div class="app__delete"><button class="btn btn-delete">Delete</button></div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
