@@ -40,6 +40,9 @@ body {
     box-shadow: 0 1rem .6rem -.6rem #777;
     background-color: #2c7a91;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .app__add-form {
@@ -48,7 +51,7 @@ body {
 }
 
 .form__group {
-    width: 60%;
+    width: 70%;
 }
 
 .form__label {
@@ -78,7 +81,7 @@ body {
 
 .form__btn {
     background-color: #fff;
-    padding: 1rem 4rem;
+    padding: 1rem 6rem;
 }
 
 .app__list {
@@ -90,9 +93,24 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    color: #ffffff;
+    font-size: 1.8rem;
+}
+.app__item-title {
+    width: 75%;
+}
+
+.app__edit, .app__delete {
+    width: 13%;
 }
 
 .btn-edit, .btn-delete {
     background-color: #fff;
 }
-
+.action__count {
+    align-self: center;
+}
+.count__btn {
+    background-color: #fff;
+    text-align: center;
+}
