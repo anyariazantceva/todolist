@@ -95,16 +95,17 @@ body {
     margin-bottom: 1rem;
     color: #ffffff;
     font-size: 1.8rem;
+    overflow: hidden;
 }
 .app__item-title {
     width: 75%;
 }
 
-.app__edit, .app__delete {
+.app__delete {
     width: 13%;
 }
 
-.btn-edit, .btn-delete {
+.btn-delete {
     background-color: #fff;
 }
 .action__count {

@@ -12,9 +12,6 @@ const loadItems = (arr) => {
     arr.forEach((item, index) => {
         let newElem = createElement();
         newElem.innerHTML = `<div class="app__item-title"><span class="item__num">${index + 1}</span>. ${item.value}</div>
-              <div class="app__edit">
-                   <button class="btn btn-edit">Edit</button>
-              </div>
               <div class="app__delete">
                    <button class="btn btn-delete" onclick="deleteTodo(${item.id})">Delete</button>
               </div>`;
@@ -72,8 +69,9 @@ const deleteTodo = (id) => {
     let selected = itemsArray.findIndex((item) => {
         return item.id === id
     });
-    itemsArray.splice(selected, 1)
+    itemsArray.splice(selected, 1);
     clearDom(itemsArray);
     countTodos();
 };
+
 
