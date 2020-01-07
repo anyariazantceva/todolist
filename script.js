@@ -1,4 +1,5 @@
 let itemsArray = [];
+let id = 0;
 
 let itemsList = document.querySelector('.app__list');
 const createElement = () => {
@@ -12,28 +13,33 @@ const loadItems = (arr) => {
         let newElem = createElement();
         newElem.innerHTML = `<div class="app__item-title"><span class="item__num">${index + 1}</span>. ${item.value}</div>
               <div class="app__edit">
-                   <button class="btn btn-edit" onclick="editTodo(${item.id})">Edit</button>
+                   <button class="btn btn-edit">Edit</button>
               </div>
               <div class="app__delete">
-                   <button class="btn btn-delete" onclick="deleteItem(${item.id})">Delete</button>
+                   <button class="btn btn-delete" onclick="deleteTodo(${item.id})">Delete</button>
               </div>`;
         itemsList.appendChild(newElem);
     });
 };
 
+const clearDom = (arr) => {
+    itemsList.innerHTML = '';
+    loadItems(arr);
+};
+
 
 const addItem = () => {
+
     let formValue = document.querySelector('.form__control').value;
     if(formValue !== '') {
         let formElem = {
-            id: 0,
+            id: id++,
             value: formValue,
             important: false,
             done: false
         };
         itemsArray.push(formElem);
-        itemsList.innerHTML = '';
-        loadItems(itemsArray);
+        clearDom(itemsArray);
         countTodos();
 
     } else {
@@ -49,13 +55,6 @@ addBtn.addEventListener('click', (e) => {
     document.querySelector('.form__control').value = '';
 });
 
-function deleteItem(id) {
-    let newArr = itemsArray.splice(id, 1);
-    itemsList.innerHTML = '';
-    loadItems(newArr);
-    countTodos();
-}
-
 
 // Count todos
 const countTodos = () => {
@@ -69,14 +68,12 @@ const countTodos = () => {
     status.innerHTML = `Total: ${newCounter}`;
 };
 
-const editTodo = (id) => {
-    let selectedItem = itemsArray.find((item) => {
-        return item.id === id;
+const deleteTodo = (id) => {
+    let selected = itemsArray.findIndex((item) => {
+        return item.id === id
     });
-    console.log(selectedItem);
-
+    itemsArray.splice(selected, 1)
+    clearDom(itemsArray);
+    countTodos();
 };
-
-
-
 
