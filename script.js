@@ -1,24 +1,4 @@
-let itemsArray = [
-    // {
-    //     id: 1,
-    //     value: 'Make Coffee',
-    //     important: false,
-    //     done: false
-    // },
-    // {
-    //     id: 2,
-    //     value: 'Wash Dishes',
-    //     important: false,
-    //     done: false
-    // },
-    // {
-    //     id: 3,
-    //     value: 'Learn Finnish',
-    //     important: false,
-    //     done: false
-    // },
-
-];
+let itemsArray = [];
 
 let itemsList = document.querySelector('.app__list');
 const createElement = () => {
@@ -32,10 +12,10 @@ const loadItems = (arr) => {
         let newElem = createElement();
         newElem.innerHTML = `<div class="app__item-title"><span class="item__num">${index + 1}</span>. ${item.value}</div>
               <div class="app__edit">
-                   <button class="btn btn-edit">Edit</button>
+                   <button class="btn btn-edit" onclick="editTodo(${item.id})">Edit</button>
               </div>
               <div class="app__delete">
-                   <button class="btn btn-delete" onclick="deleteItem()">Delete</button>
+                   <button class="btn btn-delete" onclick="deleteItem(${item.id})">Delete</button>
               </div>`;
         itemsList.appendChild(newElem);
     });
@@ -54,8 +34,9 @@ const addItem = () => {
         itemsArray.push(formElem);
         itemsList.innerHTML = '';
         loadItems(itemsArray);
+        countTodos();
 
-        } else {
+    } else {
             alert('Enter a value');
         }
 
@@ -65,31 +46,36 @@ const addBtn = document.querySelector('.form__btn');
 addBtn.addEventListener('click', (e) => {
     e.preventDefault();
     addItem();
-    console.log(itemsArray);
-   document.querySelector('.form__control').value = '';
+    document.querySelector('.form__control').value = '';
 });
 
-function deleteItem() {
-    let deleteButtons = document.querySelectorAll('.btn-delete');
-    deleteButtons.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            let target = e.target;
-            let parent = target.parentElement.parentElement.firstChild.firstChild;
-            let number = parent.innerHTML - 1;
-            itemsArray.splice(number, 1);
-            console.log(itemsArray);
-            itemsList.innerHTML = '';
-            loadItems(itemsArray);
-        });
-    });
-
+function deleteItem(id) {
+    let newArr = itemsArray.splice(id, 1);
+    itemsList.innerHTML = '';
+    loadItems(newArr);
+    countTodos();
 }
+
 
 // Count todos
 const countTodos = () => {
+    let itemsList = document.querySelectorAll('.app__list-item');
+    let status = document.querySelector('.app__status');
+    let newCounter = 0;
+    itemsList.forEach((item) => {
+        return newCounter++
+    });
 
-}
+    status.innerHTML = `Total: ${newCounter}`;
+};
+
+const editTodo = (id) => {
+    let selectedItem = itemsArray.find((item) => {
+        return item.id === id;
+    });
+    console.log(selectedItem);
+
+};
 
 
 
